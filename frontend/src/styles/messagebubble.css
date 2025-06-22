@@ -1,0 +1,99 @@
+.message-wrapper {
+  padding: 0;
+  display: flex;
+}
+
+.message-content {
+  animation: messageAppear 0.3s ease-out forwards;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Usuario */
+.message-content.user {
+  background-color: #2a2b32;
+  padding: 12px 16px;
+  border-radius: 8px;
+  max-width: 50%;
+  width: fit-content;
+  margin-left: auto;
+  color: white;
+}
+
+/* Bot */
+.message-content.bot {
+  padding: 16px 24px;
+  border-radius: 8px;
+  max-width: 80%;
+  color: #f0f2f5;
+}
+
+/* Estado deshabilitado */
+.message-content.disabled {
+  opacity: 0.5;
+  filter: grayscale(50%);
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Markdown */
+.message-content code {
+  background-color: #202123;
+  color: #facc15;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.message-content pre {
+  background-color: #202123;
+  color: #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* Etiqueta de escritura */
+.typing-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 16px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.typing-label .text {
+  margin-right: 4px;
+}
+
+.typing-label .dot {
+  width: 6px;
+  height: 6px;
+  background-color: #a0a0a0;
+  border-radius: 50%;
+  animation: typingBounce 1.2s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+.typing-label .dot:nth-child(2) {
+  animation-delay: 0s;
+}
+.typing-label .dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.typing-label .dot:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .message-content.user {
+    max-width: 70%;
+  }
+}

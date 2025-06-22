@@ -1,0 +1,157 @@
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  background: #343541;
+  font-family: 'Segoe UI', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #f0f2f5;
+  overflow: hidden;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+@keyframes messageAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+.token-usage-floating {
+  position: absolute;
+  bottom: 100px; /* Ajusta según la altura de tu input bar */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100; /* Asegura que esté encima del chat */
+  pointer-events: none; /* Permite hacer clic a través de él */
+}
+
+.token-badge {
+  display: flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 50px;
+  background: rgba(15, 16, 20, 0.6);
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 0 1.5px rgba(78, 140, 255, 0.15);
+  animation: floatIn 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.token-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.token-icon {
+  font-size: 12px;
+  color: #a0a4ad;
+  opacity: 0.9;
+}
+
+.token-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: #e0e4eb;
+  letter-spacing: -0.2px;
+}
+
+.token-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 10px;
+}
+
+/* Efecto sutil de brillo al pasar el mouse */
+.token-badge:hover {
+  background: rgba(25, 26, 30, 0.65);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 0 1.5px rgba(78, 140, 255, 0.25);
+}
+
+.token-badge:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  animation: token-shine 1.2s;
+}
+
+@keyframes token-shine {
+  100% {
+    left: 100%;
+  }
+}
+
+/* Versión más compacta para móviles */
+@media (max-width: 768px) {
+  .token-usage-floating {
+    bottom: 80px; /* Ajuste para móviles */
+  }
+  
+  .token-badge {
+    padding: 3px 12px;
+    gap: 4px;
+    border-radius: 40px;
+  }
+  
+  .token-item {
+    gap: 4px;
+  }
+  
+  .token-value {
+    font-size: 11px;
+  }
+  
+  .token-divider {
+    margin: 0 8px;
+    height: 14px;
+  }
+}

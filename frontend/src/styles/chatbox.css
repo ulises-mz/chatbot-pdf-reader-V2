@@ -1,0 +1,156 @@
+.chat-box-scroll {
+  flex: 1;
+  overflow-y: auto;
+  background: #343541;
+  scroll-behavior: smooth;
+  max-height: 100%;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  gap: 24px;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.chat-box-inner {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.chat-box-inner hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 24px 0;
+}
+
+/* Scroll personalizado */
+.chat-box-scroll::-webkit-scrollbar,
+.chat-box::-webkit-scrollbar {
+  width: 12px;
+}
+
+.chat-box-scroll::-webkit-scrollbar-track,
+.chat-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-box-scroll::-webkit-scrollbar-thumb,
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.chat-box-scroll::-webkit-scrollbar-thumb:hover,
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chat-box {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .chat-box {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #d1d5db;
+  text-align: center;
+  padding: 32px;
+}
+
+.welcome-screen h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.welcome-screen p {
+  font-size: 16px;
+  color: #a0a0a0;
+}
+
+.export-button {
+  background-color: #4f46e5;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.export-button:hover {
+  background-color: #3730a3;
+}
+
+/* Bloques de código grandes (multi-línea) */
+.chat-box-inner pre {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset;
+
+  max-width: 100%;       /* 👈 límite horizontal */
+  word-wrap: break-word; /* 👈 rompe líneas si es necesario */
+  white-space: pre;      /* conserva el formato pero permite scroll horizontal */
+  box-sizing: border-box;
+}
+
+
+/* Código inline (dentro de párrafos) */
+.chat-box-inner code {
+  background-color: #2c2c2c;
+  color: #facc15;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.95em;
+}
+
+/* Opcional: scroll horizontal suave */
+.chat-box-inner pre::-webkit-scrollbar {
+  height: 8px;
+}
+.chat-box-inner pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.chat-box,
+.chat-box-scroll {
+  width: 100%;
+  overflow-x: hidden; /* 👈 esto evita que el bloque de código empuje todo */
+  box-sizing: border-box;
+}
+.chat-box-inner pre {
+  white-space: pre-wrap;       /* 👈 permite cortar solo si hay espacios */
+  word-break: break-word;      /* 👈 corta palabras largas si es necesario */
+  overflow-x: auto;
+}
